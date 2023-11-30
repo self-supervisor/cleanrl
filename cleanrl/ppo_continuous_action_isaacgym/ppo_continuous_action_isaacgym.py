@@ -68,7 +68,7 @@ def parse_args():
     # Algorithm specific arguments
     parser.add_argument("--env-id", type=str, default="Ant",
         help="the id of the environment")
-    parser.add_argument("--total-timesteps", type=int, default=90000000,
+    parser.add_argument("--total-timesteps", type=int, default=900000,
         help="total timesteps of the experiments")
     parser.add_argument("--learning-rate", type=float, default=0.004,
         help="the learning rate of the optimizer")
@@ -424,4 +424,5 @@ if __name__ == "__main__":
         writer.add_scalar("charts/SPS", int(global_step / (time.time() - start_time)), global_step)
 
     # envs.close()
+    torch.save(agent, f"agents/{args.env_id}_{args.seed}.pth")
     writer.close()
